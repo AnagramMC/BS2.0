@@ -13,7 +13,8 @@ class BATHROBESAMURAI_API ABathrobeSamuraiGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
-	
+public:
+	ABathrobeSamuraiGameMode();
 	
 	
 };
