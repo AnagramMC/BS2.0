@@ -60,3 +60,16 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Ignore these folders
+/Binaries
+/DerivedDataCache
+/Intermediate
+/Saved
+
+# Ignore these file extensions in the root folder
+*.sdf
+*.sln
+*.vcxproj
+*.suo
+*.opensdf
