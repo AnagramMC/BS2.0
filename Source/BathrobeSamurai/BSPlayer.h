@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "BSPlayer.generated.h"
 
+// Enumerated values so we can keep track of what state the player is in to notify the Anim Blueprint on which animation to play
 UENUM(BlueprintType)
 enum class BodyState : uint8
 {
@@ -18,6 +19,7 @@ enum class BodyState : uint8
 	DEATH = 7
 };
 
+//Enumerated values so we can keep track of what attack the player is in so we can notify the Anim Blueprint on which attack to play next
 UENUM(BlueprintType)
 enum class CurrentAttack : uint8
 {

@@ -47,8 +47,11 @@ ABSPlayer::ABSPlayer()
 
 void ABSPlayer::Tick(float DeltaTime)
 {
+	//in order to make sure the current animation blueprint is working as expected, we need to do multiple checks to make sure the bodystate is correct.
+	//If the velocity is greater than zero, do a secondary check
 	if (GetVelocity().Size() > 0.f)
 	{
+		//check if the player movement component is falling, then switch to jump or moving
 		if (GetMovementComponent()->IsFalling())
 		{
 			ArinBodyState = BodyState::JUMP;
@@ -60,6 +63,7 @@ void ABSPlayer::Tick(float DeltaTime)
 	}
 	else
 	{
+		//check if player movement component is falling, then switch to jump or idle
 		if (GetMovementComponent()->IsFalling())
 		{
 			ArinBodyState = BodyState::JUMP;
