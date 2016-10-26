@@ -30,12 +30,12 @@ void AUIPlayerController::Tick(float DeltaTime)
 		}
 	}*/
 
-	////for testing purposes
-	//if (APlayerController::WasInputKeyJustPressed(EKeys::K))
-	//{
-	//	AUIPlayerController::DeathScreen();
-	//	SetPause(true);
-	//}
+	//for testing purposes
+	/*if (APlayerController::WasInputKeyJustPressed(EKeys::K))
+	{
+		AUIPlayerController::DeathScreen();
+		SetPause(true);
+	}*/
 
 	if (APlayerController::WasInputKeyJustPressed(EKeys::P))
 	{
