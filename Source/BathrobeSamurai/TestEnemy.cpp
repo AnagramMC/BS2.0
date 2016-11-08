@@ -14,8 +14,9 @@ ATestEnemy::ATestEnemy()
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
 	// Creates a mesh and attaches it to root component.
-	Mesh = CreateDefaultSubobject <UStaticMeshComponent>(TEXT("Mesh"));
+	Mesh = CreateDefaultSubobject <USkeletalMeshComponent>(TEXT("Mesh"));
 	Mesh->AttachTo(RootComponent);
+	
 
 	// Creates a collider and attaches it to root component.
 	Collider = CreateDefaultSubobject<USphereComponent>(TEXT("Collider"));

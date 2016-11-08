@@ -24,9 +24,8 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	USphereComponent* Collider;
 
-	/** Static Mesh for Item */
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* Mesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = SkeletalMesh)
+	class USkeletalMeshComponent* Mesh;
 
 	// Function for player overlap.
 	UFUNCTION()
