@@ -5,6 +5,7 @@
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/Blackboard/BlackboardKeyAllTypes.h"
+
 #include "TestEnemyController.h"
 
 
@@ -23,6 +24,8 @@ void ATestEnemyController::Possess(APawn* Pawn)
 	{
 		BlackboardComponent->InitializeBlackboard(*BehaviorTree->BlackboardAsset);
 		BehaviorTreeComponent->StartTree(*BehaviorTree);
+
+		BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("SelfActor"), Pawn);
 	}
 }
 

@@ -2,17 +2,17 @@
 
 #pragma once
 
-#include "GameFramework/Pawn.h"
-#include "TestEnemy.generated.h"
+#include "GameFramework/Character.h"
+#include "TEnemy.generated.h"
 
 UCLASS()
-class BATHROBESAMURAI_API ATestEnemy : public APawn
+class BATHROBESAMURAI_API ATEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	ATestEnemy();
+	// Sets default values for this character's properties
+	ATEnemy();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -24,13 +24,8 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	USphereComponent* Collider;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = SkeletalMesh)
-	class USkeletalMeshComponent* Mesh;
-
 	// Function for player overlap.
 	UFUNCTION()
 	void OnPlayerOverlap(AActor* OverlappedPlayer, AActor* OtherActor);
-
-	
 	
 };
