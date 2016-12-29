@@ -98,4 +98,12 @@ protected:
 
 	/** Manages the lockon state - will be a toggle on and off */
 	bool LockOnEnemy;
+
+	//Counter for what light attack arin should be on.
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int LightAttackCounter;
+
+	//Counter for what heavy attack arin should be on.
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int HeavyAttackCounter;
 };
