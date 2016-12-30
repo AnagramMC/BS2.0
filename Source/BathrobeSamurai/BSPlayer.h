@@ -45,6 +45,9 @@ class BATHROBESAMURAI_API ABSPlayer : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
+	UPROPERTY(EditDefaultsOnly)
+	UBoxComponent* HitCollider;
+
 public:
 	// Sets default values for this character's properties
 	ABSPlayer();

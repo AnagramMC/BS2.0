@@ -33,11 +33,15 @@ ABSPlayer::ABSPlayer()
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 600.0f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
-
-												// Create a follow camera
+	
+	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	// Create Hit Collider
+	HitCollider = CreateDefaultSubobject<UBoxComponent>(TEXT("HitCollider"));
+	HitCollider->AttachTo(RootComponent);
 
 	ArinCurAttack = CurrentAttack::DEFAULT;
 
