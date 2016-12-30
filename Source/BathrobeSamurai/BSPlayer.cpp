@@ -93,7 +93,7 @@ void ABSPlayer::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
 	InputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 	InputComponent->BindAxis("TurnRate", this, &ABSPlayer::TurnAtRate);
-	InputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	//InputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	InputComponent->BindAxis("LookUpRate", this, &ABSPlayer::LookUpAtRate);
 
 }
