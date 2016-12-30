@@ -106,4 +106,5 @@ protected:
 	//Counter for what heavy attack arin should be on.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int HeavyAttackCounter;
+
 };
