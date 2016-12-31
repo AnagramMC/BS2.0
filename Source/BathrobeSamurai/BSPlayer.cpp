@@ -51,6 +51,7 @@ ABSPlayer::ABSPlayer()
 
 void ABSPlayer::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 	//in order to make sure the current animation blueprint is working as expected, we need to do multiple checks to make sure the bodystate is correct.
 	//If the velocity is greater than zero, do a secondary check
 	if (GetVelocity().Size() > 0.f)
