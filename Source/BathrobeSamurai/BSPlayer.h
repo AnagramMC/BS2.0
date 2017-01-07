@@ -69,6 +69,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enum")
 	CurrentAttack ArinCurAttack;
 
+	UFUNCTION(BlueprintCallable, Category = "Effects")
+	void HitEffects();
+
 public:
 
 	/** Returns CameraBoom subobject **/
@@ -109,5 +112,8 @@ protected:
 	//Counter for what heavy attack arin should be on.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int HeavyAttackCounter;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool AppliedDamage;
 
 };

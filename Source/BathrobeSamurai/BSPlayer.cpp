@@ -143,3 +143,8 @@ void ABSPlayer::MoveRight(float Value)
 		AddMovementInput(Direction, Value);
 	}
 }
+
+void ABSPlayer::HitEffects()
+{
+
+}
