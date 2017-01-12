@@ -26,7 +26,7 @@ void AHUD_Widget::DrawHUD()
 	if (CurPlayer)
 	{
 	//	fHealth = CurPlayer->getHitPoints();
-		HealthText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fHealth));
+		HealthText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fHealth/10.f));
 		DrawText("Health: ", FColor::Green, 50, 50, HUDFont);
 
 	//	fSuper = CurPlayer->getSuperMeter();
@@ -43,7 +43,7 @@ void AHUD_Widget::DrawHUD()
 		//Draws line where Length = Health
 		if (fHealth > 0.f)
 		{
-			Draw2DLine(50, 80, (50 + FMath::Abs(fHealth)) * 2, 80, HUDColor);
+			Draw2DLine(50, 80, (50 + FMath::Abs(fHealth/10.f)) * 2, 80, HUDColor);
 			DrawText(HealthText, HUDColor, 80, 90, HUDFont);
 		}
 		else

@@ -28,19 +28,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameManager")
 		TSubclassOf<UGameManager> GameManagerClass;
 
-protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Stats")
 		float fHealth = 1.f;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Stats")
 		float fSuper = 1.f;
+
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
 		uint8 iComboCount = 1;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
 		uint8 iKillCount = 1;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
+		ABSPlayer* CurPlayer;
 
 	UGameManager* GameManager;
-	ABSPlayer* CurPlayer;
 	FString HealthText;
 	FString SuperText;
 	FString ComboText;

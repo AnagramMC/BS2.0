@@ -19,14 +19,14 @@ UGameManager::UGameManager(int32 _TerraBugsTotal)
 	CurrentCombo = 0;
 }
 
-//uint8 UGameManager::GetComboCount()
-//{
-//	ABSPlayer* Player = Cast<ABSPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
-//	if (Arin)
+uint8 UGameManager::GetComboCount()
+{
+	ABSPlayer* Player = Cast<ABSPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
+//	if (Player)
 //		return Player->getComboCounter();
 //	else
-//		return NULL;
-//}
+		return NULL;
+}
 
 void UGameManager::TerraBugKilled()
 {
