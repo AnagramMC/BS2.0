@@ -45,7 +45,4 @@ protected:
 	FString SuperText;
 	FString ComboText;
 	FString KillText;
-	
-	
-	
 };
