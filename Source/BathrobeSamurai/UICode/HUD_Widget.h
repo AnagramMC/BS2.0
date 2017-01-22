@@ -33,6 +33,30 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Stats")
 		float fSuper = 1.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* HealthBase;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health90;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health80;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health70;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health60;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health50;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health40;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health30;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health20;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Health10;
+
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
 		uint8 iComboCount = 1;
