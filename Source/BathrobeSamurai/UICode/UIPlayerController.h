@@ -5,6 +5,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BSPlayer.h"
 #include "Blueprint/UserWidget.h"
+#include "GameManager/GameManager.h"
 #include "UIPlayerController.generated.h"
 
 /**
@@ -25,6 +26,8 @@ public:
 		TSubclassOf<UUserWidget> wDeathMenu;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
 		TSubclassOf<UUserWidget> wLoadingScreen;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameManager")
+		TSubclassOf<UGameManager> GameManagerClass;
 
 	bool bIsDead = false;
 	
@@ -34,6 +37,7 @@ protected:
 	UUserWidget* MyPauseMenu;
 	UUserWidget* MyDeathMenu;
 	UUserWidget* MyLoadingScreen;
+	UGameManager* GameManager;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Character|Stats")
 		float Health = 1.f;

@@ -121,6 +121,11 @@ void AHUD_Widget::DrawHUD()
 	//			DrawText("Combo!", FColor::Red, (ScreenDimensions.X - 100), 50, HUDFont);
 	//			DrawText(ComboText, FColor::Red, (ScreenDimensions.X - 100), 80, HUDFont);
 	//		}
+
+			if (fHealth > 0.f)
+				GameManager->SetDead(false);
+			else
+				GameManager->SetDead(true);
 		}
 	}
 }

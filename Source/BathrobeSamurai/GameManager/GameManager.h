@@ -4,6 +4,7 @@
 
 #include "Object.h"
 #include "BSPlayer.h"
+#include "TEnemy.h"
 #include "GameManager.generated.h"
 
 /**
@@ -19,6 +20,10 @@ public:
 	UGameManager(int32 _TerraBugsTotal);
 
 	uint8 GetComboCount();
+	uint8 GetKillStreak();
+
+	void SetDead(bool dead);
+	bool GetDead();
 
 	void TerraBugKilled();
 	void Victory();
@@ -26,6 +31,11 @@ public:
 private:
 	int32 TerraBugsTotal;
 	int32 TerraBugsKilled;
-	int32 BugsKilled;
+	int32 BugsKilledTotal;
+	int32 KillStreak;
 	uint8 CurrentCombo;
+	bool bIsDead = false;
+
+	void SetComboCount();
+	void SetKillStreak();
 };

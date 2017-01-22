@@ -7,7 +7,8 @@ UGameManager::UGameManager()
 {
 	TerraBugsTotal = 3;
 	TerraBugsKilled = 0;
-	BugsKilled = 0;
+	BugsKilledTotal = 0;
+	KillStreak = 0;
 	CurrentCombo = 0;
 }
 
@@ -15,17 +16,32 @@ UGameManager::UGameManager(int32 _TerraBugsTotal)
 {
 	TerraBugsTotal = _TerraBugsTotal;
 	TerraBugsKilled = 0;
-	BugsKilled = 0;
+	BugsKilledTotal = 0;
+	KillStreak = 0;
 	CurrentCombo = 0;
+}
+
+void UGameManager::SetComboCount()
+{
+	
+}
+
+void UGameManager::SetKillStreak()
+{
+	
 }
 
 uint8 UGameManager::GetComboCount()
 {
-	ABSPlayer* Player = Cast<ABSPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
+	return CurrentCombo;
+//	ABSPlayer* Player = Cast<ABSPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
 //	if (Player)
 //		return Player->getComboCounter();
-//	else
-		return NULL;
+}
+
+uint8 UGameManager::GetKillStreak()
+{
+	return KillStreak;
 }
 
 void UGameManager::TerraBugKilled()
@@ -40,4 +56,14 @@ void UGameManager::TerraBugKilled()
 void UGameManager::Victory()
 {
 
+}
+
+void UGameManager::SetDead(bool dead)
+{
+	bIsDead = dead;
+}
+
+bool UGameManager::GetDead()
+{
+	return bIsDead;
 }

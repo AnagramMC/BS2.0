@@ -37,7 +37,20 @@ void AUIPlayerController::Tick(float DeltaTime)
 		SetPause(true);
 	}*/
 
-	if (APlayerController::WasInputKeyJustPressed(EKeys::P))
+	if (GameManagerClass)
+	{
+		GameManager = NewObject<UGameManager>(this, GameManagerClass, TEXT("GameManager"));
+		if (GameManager)
+		{
+			if (GameManager->GetDead())
+			{
+				AUIPlayerController::DeathScreen();
+				SetPause(true);
+			}
+		}
+	}
+
+	if (APlayerController::WasInputKeyJustPressed(EKeys::P) || APlayerController::WasInputKeyJustPressed(EKeys::Gamepad_Special_Right))
 	{
 		AUIPlayerController::PauseMenu();
 		SetPause(true);
