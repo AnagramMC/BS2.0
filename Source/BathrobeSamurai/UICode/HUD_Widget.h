@@ -31,7 +31,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Stats")
 		float fHealth = 1.f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Stats")
-		float fSuper = 1.f;
+		float fSuper = 1000.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
 		UTexture* HealthBase;
@@ -55,6 +55,29 @@ public:
 		UTexture* Health20;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
 		UTexture* Health10;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* SuperBase;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super90;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super80;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super70;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super60;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super50;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super40;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super30;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super20;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Arts")
+		UTexture* Super10;
 
 
 protected:

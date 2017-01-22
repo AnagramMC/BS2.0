@@ -25,18 +25,22 @@ void AHUD_Widget::DrawHUD()
 	{
 		DrawTextureSimple(HealthBase, 50, 50, 0.4f);
 	}
+	if (SuperBase)
+	{
+		DrawTextureSimple(SuperBase, 50, 50, 0.4f);
+	}
 
 	//Get player and print health
 	CurPlayer = Cast<ABSPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
 	if (CurPlayer)
 	{
 	//	fHealth = CurPlayer->getHitPoints();
-		HealthText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fHealth/10.f));
-		DrawText("Health: ", FColor::Green, 50, 50, HUDFont);
+		/*HealthText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fHealth/10.f));
+		DrawText("Health: ", FColor::Green, 50, 50, HUDFont);*/
 
 	//	fSuper = CurPlayer->getSuperMeter();
-		SuperText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fSuper));
-		DrawText("Super: ", FColor::Blue, 50, 120, HUDFont);
+		/*SuperText = FString::Printf(TEXT("%10.1f"), FMath::Abs(fSuper));
+		DrawText("Super: ", FColor::Blue, 50, 120, HUDFont);*/
 
 		//Draws line where Length = Health
 		/*if (fHealth > 0.f)
@@ -71,6 +75,27 @@ void AHUD_Widget::DrawHUD()
 		if (fHealth >= 100.f && fHealth < 200.f)
 			DrawTextureSimple(Health10, 50, 50, 0.4f);
 
+		if (fSuper == 1000.f)
+			DrawTextureSimple(Super100, 50, 50, 0.4f);
+		if (fSuper >= 900.f && fSuper < 1000.f)
+			DrawTextureSimple(Super90, 50, 50, 0.4f);
+		if (fSuper >= 800.f && fSuper < 900.f)
+			DrawTextureSimple(Super80, 50, 50, 0.4f);
+		if (fSuper >= 700.f && fSuper < 800.f)
+			DrawTextureSimple(Super70, 50, 50, 0.4f);
+		if (fSuper >= 600.f && fSuper < 700.f)
+			DrawTextureSimple(Super60, 50, 50, 0.4f);
+		if (fSuper >= 500.f && fSuper < 600.f)
+			DrawTextureSimple(Super50, 50, 50, 0.4f);
+		if (fSuper >= 400.f && fSuper < 500.f)
+			DrawTextureSimple(Super40, 50, 50, 0.4f);
+		if (fSuper >= 300.f && fSuper < 400.f)
+			DrawTextureSimple(Super30, 50, 50, 0.4f);
+		if (fSuper >= 200.f && fSuper < 300.f)
+			DrawTextureSimple(Super20, 50, 50, 0.4f);
+		if (fSuper >= 100.f && fSuper < 200.f)
+			DrawTextureSimple(Super10, 50, 50, 0.4f);
+
 		/*if (fHealth > 100 / 2)
 			HUDColor = FColor::Green;
 		if (fHealth <= 100 / 2 && fHealth > 100 / 4)
@@ -78,22 +103,9 @@ void AHUD_Widget::DrawHUD()
 		if (fHealth <= 100 / 4)
 			HUDColor = FColor::Red;*/
 
-		//Draws line where Length = Health
-		if (fHealth > 0.f)
-		{
-			DrawTextureSimple(HealthBase, 50, 50, 0.4f);
-			/*Draw2DLine(50, 80, (50 + FMath::Abs(fHealth/10.f)) * 2, 80, HUDColor);
-			DrawText(HealthText, HUDColor, 80, 90, HUDFont);*/
-		}
-		else
-		{
-			Draw2DLine(0, 0, 0, 0, FColor::White);
-			DrawText("0", HUDColor, 80, 90, HUDFont);
-		}
-
 		//Draw Super Meter
-		Draw2DLine(50, 150, (50 + FMath::Abs(fSuper)), 150, FColor::Blue);
-		DrawText(SuperText, FColor::Blue, 80, 160, HUDFont);
+		/*Draw2DLine(50, 150, (50 + FMath::Abs(fSuper)), 150, FColor::Blue);
+		DrawText(SuperText, FColor::Blue, 80, 160, HUDFont);*/
 	}
 
 	if (GameManagerClass)
