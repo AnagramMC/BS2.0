@@ -4,7 +4,6 @@
 
 #include "Object.h"
 #include "BSPlayer.h"
-#include "TEnemy.h"
 #include "GameManager.generated.h"
 
 /**
