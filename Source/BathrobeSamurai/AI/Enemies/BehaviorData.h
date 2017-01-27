@@ -41,12 +41,9 @@ enum EEngageType
 /////////////////////////////////////////////////////STRUCTURES/////////////////////////////////////////////////////////////////
 
 USTRUCT(BlueprintType)
-struct FActorTrigger
+struct FSightTrigger
 {
 	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorTrigger")
-	FName ActorTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorTrigger")
 	TEnumAsByte<EBehaviorTypes> BehaviorTo;
@@ -67,10 +64,10 @@ struct FBasicBehaviors
 	TArray<FName> TargetTags;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
-	TArray<FActorTrigger> OnSightTrigger;
+	TArray<FSightTrigger> OnSightTrigger;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
-	TArray<FActorTrigger> OnLoseSightTrigger;
+	TArray<FSightTrigger> OnLoseSightTrigger;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
 	TArray<UAnimMontage*> Animations;

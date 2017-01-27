@@ -3,13 +3,13 @@
 #pragma once
 
 #include "AI/Enemies/Enemy.h"
-#include "BasicEnemy.generated.h"
+#include "BasicEnemyMelee.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BATHROBESAMURAI_API ABasicEnemy : public AEnemy
+class BATHROBESAMURAI_API ABasicEnemyMelee : public AEnemy
 {
 	GENERATED_BODY()
 	
