@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Character.h"
+#include "BehaviorComponent.h"
 #include "Enemy.generated.h"
 
 UCLASS()
@@ -19,5 +20,9 @@ public:
 	
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
+
+	UPROPERTY(EditAnywhere)
+	UBehaviorComponent* BehaviorComponent;
+	
 	
 };

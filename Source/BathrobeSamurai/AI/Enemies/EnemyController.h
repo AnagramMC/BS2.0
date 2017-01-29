@@ -29,7 +29,7 @@ public:
 	UBehaviorTree* BehaviorTree;
 
 	UPROPERTY(EditDefaultsOnly)
-	UBehaviorComponent* BehaviorTreeComponent;
+	UBehaviorTreeComponent* BehaviorTreeComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UBlackboardComponent* BlackboardComponent;

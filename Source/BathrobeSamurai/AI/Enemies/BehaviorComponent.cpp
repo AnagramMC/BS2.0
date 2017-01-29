@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BathrobeSamurai.h"
+#include "Enemy.h"
+#include "EnemyController.h"
 #include "BehaviorComponent.h"
 
 
@@ -21,7 +23,24 @@ void UBehaviorComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	PawnRef = Cast<AEnemy>(GetOwner());
+
+	if (PawnRef)
+	{
+		ControllerRef = Cast <AEnemyController>(PawnRef->GetController());
+	}
+
+
+	BehaviorArray.Add(IdleBehaviorConfig);
+	BehaviorArray.Add(PatrolBehaviorConfig);
+	BehaviorArray.Add(EngageBehaviorConfig);
+	BehaviorArray.Add(HitBehaviorConfig);
+	BehaviorArray.Add(FleeBehaviorConfig);
+
+	uint8 Bytes = InitialBehavior;
+
+	CurrentBehaviorConfig = BehaviorArray[Bytes];
+
 	
 }
 
@@ -32,7 +51,14 @@ FBasicBehaviors UBehaviorComponent::GetBehaviorConfig()
 
 void UBehaviorComponent::ChangeBehavior(TEnumAsByte<EBehaviorTypes> NewBehavior)
 {
+	uint8 Bytes = NewBehavior;
 
+	CurrentBehaviorConfig = BehaviorArray[Bytes];
+
+	if (ControllerRef)
+	{
+
+	}
 }
 
 void UBehaviorComponent::FindNextPatrolLocation()
