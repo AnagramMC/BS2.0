@@ -18,6 +18,8 @@ AEnemy::AEnemy()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GetCharacterMovement()->MaxWalkSpeed = BehaviorComponent->GetBehaviorConfig().MovementSpeed;
 	
 }
 

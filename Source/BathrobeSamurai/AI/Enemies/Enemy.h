@@ -23,6 +23,14 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	UBehaviorComponent* BehaviorComponent;
-	
-	
+
+	UPROPERTY(EditAnywhere, Category = "Sight")
+	float SightRange;
+
+	UPROPERTY(EditAnywhere, Category = "Sight")
+	float LoseSightRange;
+
+	UPROPERTY(EditAnywhere, Category = "Sight")
+	float SightAngle;
+
 };

@@ -30,7 +30,7 @@ enum EPatrolTypes
 };
 
 UENUM(BlueprintType)
-enum EEngageType
+enum EEngageTypes
 {
 	ATTACKING						UMETA(DisplayName = "Attacking"),
 	STALKING						UMETA(DisplayName = "Stalking")
@@ -40,14 +40,6 @@ enum EEngageType
 
 /////////////////////////////////////////////////////STRUCTURES/////////////////////////////////////////////////////////////////
 
-USTRUCT(BlueprintType)
-struct FSightTrigger
-{
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorTrigger")
-	TEnumAsByte<EBehaviorTypes> BehaviorTo;
-};
 
 USTRUCT(BlueprintType)
 struct FBasicBehaviors
@@ -64,10 +56,16 @@ struct FBasicBehaviors
 	TArray<FName> TargetTags;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
-	TArray<FSightTrigger> OnSightTrigger;
+	bool OnSightTrigger;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
-	TArray<FSightTrigger> OnLoseSightTrigger;
+	TEnumAsByte<EBehaviorTypes> OnSightBehaviorTo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
+	bool OnLoseSightTrigger;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
+	TEnumAsByte<EBehaviorTypes> OnLoseSightBehaviorTo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
 	TArray<UAnimMontage*> Animations;

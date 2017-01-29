@@ -41,14 +41,77 @@ void AEnemyController::Possess(APawn* Pawn)
 
 		if (BlackboardComponent)
 		{
+			BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("SelfActor"), PawnRef);
 
+			BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("StartLocation"), PawnRef->GetActorLocation());
+			BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("TargetLocation"), PawnRef->GetActorLocation());
+			BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("PlayerMemoryLocation"), PawnRef->GetActorLocation());
+
+			if (Brain)
+			{
+				BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->InitialBehavior);
+				BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("IdleType"), Brain->IdleType);
+				BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("PatrolType"), Brain->PatrolType);
+				BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("EngageType"), Brain->EngageType);
+
+				BlackboardComponent->SetValue<UBlackboardKeyType_Float>(TEXT("WanderRange"), Brain->MaxRandLocationDistance);
+				BlackboardComponent->SetValue<UBlackboardKeyType_Float>(TEXT("WanderWait"), Brain->RandLocationDelay);
+
+			}
 		}
+
+		Sight->SightRadius = PawnRef->SightRange;
+		Sight->LoseSightRadius = PawnRef->LoseSightRange;
+		Sight->PeripheralVisionAngleDegrees = PawnRef->SightAngle;
+		Sight->DetectionByAffiliation.bDetectEnemies = true;
+		Sight->DetectionByAffiliation.bDetectNeutrals = true;
+		Sight->DetectionByAffiliation.bDetectFriendlies = true;
+
+		GetAIPerceptionComponent()->ConfigureSense(*Sight);
+
+		UAIPerceptionSystem::RegisterPerceptionStimuliSource(this, Sight->GetSenseImplementation(), PawnRef);
 
 	}
 }
 
 void AEnemyController::UpdatePerception(TArray<AActor*> SensedActor)
 {
+	for (AActor* Actor : SensedActor)
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("I See!"));
 
+		ABSPlayer* Player = Cast<ABSPlayer>(Actor);
+
+		if (Player)
+		{
+
+			FActorPerceptionBlueprintInfo Info;
+
+			GetAIPerceptionComponent()->GetActorsPerception(Actor, Info);
+
+			if (Info.LastSensedStimuli.Num() > 0)
+			{
+				const FAIStimulus Stimulus = Info.LastSensedStimuli[0];
+
+				if (Stimulus.WasSuccessfullySensed())
+				{
+					if (Brain->GetBehaviorConfig().OnSightTrigger)
+					{
+						Brain->ChangeBehavior(Brain->GetBehaviorConfig().OnSightBehaviorTo);
+						UE_LOG(LogTemp, Warning, TEXT("See Player!"));
+					}
+				}
+				else
+				{
+					if (Brain->GetBehaviorConfig().OnLoseSightTrigger)
+					{
+						Brain->GetBehaviorConfig().OnLoseSightBehaviorTo;
+						UE_LOG(LogTemp, Warning, TEXT("Lost Player!"));
+					}
+					BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("PlayerMemoryLocation"), Player->GetActorLocation());
+				}
+			}
+		}
+	}
 }
 

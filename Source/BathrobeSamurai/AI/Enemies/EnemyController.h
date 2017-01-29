@@ -25,6 +25,8 @@ public:
 
 	AEnemy* PawnRef;
 
+	UBehaviorComponent* Brain;
+
 	UPROPERTY(EditDefaultsOnly)
 	UBehaviorTree* BehaviorTree;
 

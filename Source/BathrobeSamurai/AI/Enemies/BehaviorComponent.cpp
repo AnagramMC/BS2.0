@@ -55,6 +55,8 @@ void UBehaviorComponent::ChangeBehavior(TEnumAsByte<EBehaviorTypes> NewBehavior)
 
 	CurrentBehaviorConfig = BehaviorArray[Bytes];
 
+	PawnRef->GetCharacterMovement()->MaxWalkSpeed = GetBehaviorConfig().MovementSpeed;
+
 	if (ControllerRef)
 	{
 

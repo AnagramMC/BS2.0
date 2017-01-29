@@ -81,7 +81,7 @@ public:
 	FBasicBehaviors EngageBehaviorConfig;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Engage Settings")
-	TEnumAsByte<EEngageType> EngageType;
+	TEnumAsByte<EEngageTypes> EngageType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Engage Settings")
 	float AttackDistance;
