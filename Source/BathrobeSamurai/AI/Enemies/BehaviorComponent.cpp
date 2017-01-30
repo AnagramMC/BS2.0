@@ -14,6 +14,12 @@ UBehaviorComponent::UBehaviorComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
+	IdleBehaviorConfig.BehaviorType = IDLE;
+	PatrolBehaviorConfig.BehaviorType = PATROL;
+	EngageBehaviorConfig.BehaviorType = ENGAGE;
+	HitBehaviorConfig.BehaviorType = HIT;
+	FleeBehaviorConfig.BehaviorType = FLEE;
+
 	// ...
 }
 

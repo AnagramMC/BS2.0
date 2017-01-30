@@ -21,7 +21,7 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	UBehaviorComponent* BehaviorComponent;
 
 	UPROPERTY(EditAnywhere, Category = "Sight")
