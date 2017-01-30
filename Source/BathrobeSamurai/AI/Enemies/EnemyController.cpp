@@ -27,6 +27,8 @@ AEnemyController::AEnemyController(const class FObjectInitializer& ObjectInitial
 
 void AEnemyController::Possess(APawn* Pawn)
 {
+	Super::Possess(Pawn);
+
 	if (Pawn)
 	{
 		PawnRef = Cast<AEnemy>(Pawn);
@@ -95,20 +97,35 @@ void AEnemyController::UpdatePerception(TArray<AActor*> SensedActor)
 
 				if (Stimulus.WasSuccessfullySensed())
 				{
+
+					UE_LOG(LogTemp, Warning, TEXT("See Player!"));
+				
 					if (Brain->GetBehaviorConfig().OnSightTrigger)
 					{
+
 						Brain->ChangeBehavior(Brain->GetBehaviorConfig().OnSightBehaviorTo);
-						UE_LOG(LogTemp, Warning, TEXT("See Player!"));
+
+						BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->GetBehaviorConfig().BehaviorType);
+						BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("TargetActor"), Player);
 					}
+
+					
 				}
 				else
 				{
+					UE_LOG(LogTemp, Warning, TEXT("Lost Player!"));
+
 					if (Brain->GetBehaviorConfig().OnLoseSightTrigger)
 					{
-						Brain->GetBehaviorConfig().OnLoseSightBehaviorTo;
-						UE_LOG(LogTemp, Warning, TEXT("Lost Player!"));
+						Brain->ChangeBehavior(Brain->GetBehaviorConfig().OnLoseSightBehaviorTo);
+
+						BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->GetBehaviorConfig().BehaviorType);
+
+						
 					}
+
 					BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("PlayerMemoryLocation"), Player->GetActorLocation());
+					
 				}
 			}
 		}

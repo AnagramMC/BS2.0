@@ -8,7 +8,7 @@ UENUM(BlueprintType)
 enum EBehaviorTypes
 {
 	IDLE							UMETA(DisplayName = "Idle"),
-	PATROL							UMETA(DispalyName = "Patrol"),
+	PATROL							UMETA(DisplayName = "Patrol"),
 	ENGAGE							UMETA(DisplayName = "Engage"),
 	HIT								UMETA(DisplayName = "Hit"),
 	FLEE							UMETA(DisplayName = "Flee")
@@ -46,7 +46,7 @@ struct FBasicBehaviors
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
 	TEnumAsByte<EBehaviorTypes> BehaviorType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BasicBehavior")
