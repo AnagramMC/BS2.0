@@ -2,6 +2,7 @@
 
 #include "BathrobeSamurai.h"
 #include "BSPlayer.h"
+#include "EnemyStorage.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
@@ -58,6 +59,7 @@ void AEnemyController::Possess(APawn* Pawn)
 
 				BlackboardComponent->SetValue<UBlackboardKeyType_Float>(TEXT("WanderRange"), Brain->MaxRandLocationDistance);
 				BlackboardComponent->SetValue<UBlackboardKeyType_Float>(TEXT("WanderWait"), Brain->RandLocationDelay);
+				BlackboardComponent->SetValue<UBlackboardKeyType_Float>(TEXT("AttackDistance"), Brain->AttackDistance);
 
 			}
 		}
@@ -107,6 +109,23 @@ void AEnemyController::UpdatePerception(TArray<AActor*> SensedActor)
 
 						BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->GetBehaviorConfig().BehaviorType);
 						BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("TargetActor"), Player);
+
+						if (Brain->GetBehaviorConfig().BehaviorType == ENGAGE)
+						{
+							TArray<AActor*> FoundActors;
+
+							UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemyStorage::StaticClass(), FoundActors);
+
+							if (FoundActors.Num() > 0)
+							{
+								AEnemyStorage* EnemyStorage = Cast<AEnemyStorage>(FoundActors[0]);
+								
+								if (EnemyStorage)
+								{
+									EnemyStorage->AddEnemyToList(PawnRef);
+								}
+							}
+						}
 					}
 
 					
