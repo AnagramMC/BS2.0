@@ -13,10 +13,11 @@ enum class BodyState : uint8
 	MOVING = 1,
 	JUMP = 2,
 	ATTACK = 3,
-	EVADE = 4,
-	SUPER = 5,
-	HIT = 6,
-	DEATH = 7
+	BLOCK = 4,
+	EVADE = 5,
+	SUPER = 6,
+	HIT = 7,
+	DEATH = 8
 };
 
 //Enumerated values so we can keep track of what attack the player is in so we can notify the Anim Blueprint on which attack to play next
