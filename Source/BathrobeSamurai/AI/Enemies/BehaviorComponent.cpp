@@ -43,6 +43,8 @@ void UBehaviorComponent::BeginPlay()
 	BehaviorArray.Add(HitBehaviorConfig);
 	BehaviorArray.Add(FleeBehaviorConfig);
 
+	AnimationIndex.AddZeroed(BehaviorArray.Num());
+
 	uint8 Bytes = InitialBehavior;
 
 	CurrentBehaviorConfig = BehaviorArray[Bytes];
@@ -74,14 +76,43 @@ void UBehaviorComponent::FindNextPatrolLocation()
 
 }
 
-void UBehaviorComponent::FindAttackTarget()
+float UBehaviorComponent::PlayAnimation()
 {
+	UAnimMontage* Anim;
 
-}
+	int Order;
 
-void UBehaviorComponent::PlayAnimation()
-{
+	if (CurrentBehaviorConfig.Animations.Num() > 0)
+	{
+		if (CurrentBehaviorConfig.RandomAnim)
+		{
+			Order = FMath::RandRange(0, CurrentBehaviorConfig.Animations.Num() - 1);
 
+			Anim = CurrentBehaviorConfig.Animations[Order];
+		}
+		else
+		{
+			uint8 Bytes = InitialBehavior;
+
+			AnimationIndex[Bytes] ++;
+
+			Order = AnimationIndex[Bytes] % CurrentBehaviorConfig.Animations.Num();
+
+			if (Order < 0)
+			{
+				Order = CurrentBehaviorConfig.Animations.Num() - 1;
+			}
+
+			Anim = CurrentBehaviorConfig.Animations[Order];
+		}
+
+		if (Anim)
+		{
+			return PawnRef->PlayAnimMontage(Anim);
+		}
+	}
+
+	return 0.0f;
 }
 
 

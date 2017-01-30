@@ -31,6 +31,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "General Settings")
 	TEnumAsByte<EBehaviorTypes> InitialBehavior;
 
+	TArray<int> AnimationIndex;
+
 	class AEnemy* PawnRef;
 
 	class AEnemyController* ControllerRef;
@@ -121,9 +123,7 @@ public:
 
 	void FindNextPatrolLocation();
 
-	void FindAttackTarget();
-
 	UFUNCTION(BlueprintCallable, Category = "Animation")
-	void PlayAnimation();
+	float PlayAnimation();
 
 };

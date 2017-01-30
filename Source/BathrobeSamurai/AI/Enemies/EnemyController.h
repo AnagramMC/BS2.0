@@ -25,6 +25,7 @@ public:
 
 	AEnemy* PawnRef;
 
+	UPROPERTY(BlueprintReadWrite)
 	UBehaviorComponent* Brain;
 
 	UPROPERTY(EditDefaultsOnly)
