@@ -37,6 +37,16 @@ void AEnemyStorage::AddEnemyToList(AEnemy* EnemyRef)
 	ArrangeList();
 }
 
+void AEnemyStorage::RemoveEnemyFromList(AEnemy* EnemyRef)
+{
+	if (EnemyList.Contains(EnemyRef))
+	{
+		EnemyList.Remove(EnemyRef);
+	}
+
+	ArrangeList();
+}
+
 void AEnemyStorage::ArrangeList()
 {
 	if (EnemyList.Num() > 0)

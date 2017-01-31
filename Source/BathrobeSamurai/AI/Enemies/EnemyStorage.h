@@ -23,6 +23,8 @@ public:
 
 	void AddEnemyToList(AEnemy* EnemyRef);
 
+	void RemoveEnemyFromList(AEnemy* EnemyRef);
+
 	TArray<AEnemy*> EnemyList;
 
 	void ArrangeList();

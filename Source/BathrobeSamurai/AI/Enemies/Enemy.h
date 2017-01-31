@@ -24,6 +24,11 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UBehaviorComponent* BehaviorComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MaxHealth;
+
+	float CurrentHealth;
+
 	UPROPERTY(EditAnywhere, Category = "Sight")
 	float SightRange;
 
@@ -32,5 +37,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Sight")
 	float SightAngle;
+
+	virtual float TakeDamage (float DamageAmount, struct FDamageEvent const & DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
+
+	void OnDeath();
 
 };

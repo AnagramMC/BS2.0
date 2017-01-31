@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BathrobeSamurai.h"
+#include "EnemyStorage.h"
 #include "Enemy.h"
 
 
@@ -21,7 +22,7 @@ void AEnemy::BeginPlay()
 
 	GetCharacterMovement()->MaxWalkSpeed = BehaviorComponent->GetBehaviorConfig().MovementSpeed;
 
-	
+	CurrentHealth = MaxHealth;
 	
 }
 
@@ -30,6 +31,41 @@ void AEnemy::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
+}
+
+float AEnemy::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	CurrentHealth -= ActualDamage;
+
+	UE_LOG(LogTemp, Warning, TEXT("%f"), CurrentHealth);
+
+	if (CurrentHealth <= 0)
+	{
+		OnDeath();
+	}
+
+	return ActualDamage;
+}
+
+void AEnemy::OnDeath()
+{
+	TArray<AActor*> FoundActors;
+
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemyStorage::StaticClass(), FoundActors);
+
+	if (FoundActors.Num() > 0)
+	{
+		AEnemyStorage* EnemyStorage = Cast<AEnemyStorage>(FoundActors[0]);
+
+		if (EnemyStorage)
+		{
+			EnemyStorage->RemoveEnemyFromList(this);
+		}
+	}
+
+	Destroy();
 }
 
 
