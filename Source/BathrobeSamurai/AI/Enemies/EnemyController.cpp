@@ -44,6 +44,7 @@ void AEnemyController::Possess(APawn* Pawn)
 
 		if (BlackboardComponent)
 		{
+
 			BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("SelfActor"), PawnRef);
 
 			BlackboardComponent->SetValue<UBlackboardKeyType_Vector>(TEXT("StartLocation"), PawnRef->GetActorLocation());
@@ -107,8 +108,8 @@ void AEnemyController::UpdatePerception(TArray<AActor*> SensedActor)
 
 						Brain->ChangeBehavior(Brain->GetBehaviorConfig().OnSightBehaviorTo);
 
-						BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->GetBehaviorConfig().BehaviorType);
-						BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("TargetActor"), Player);
+						//BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), Brain->GetBehaviorConfig().BehaviorType);
+						//BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("TargetActor"), Player);
 
 						if (Brain->GetBehaviorConfig().BehaviorType == ENGAGE)
 						{

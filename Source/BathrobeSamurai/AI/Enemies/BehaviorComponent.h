@@ -119,6 +119,7 @@ public:
 
 	FBasicBehaviors GetBehaviorConfig();
 
+	UFUNCTION(BlueprintCallable, Category = "Behavior")
 	void ChangeBehavior(TEnumAsByte<EBehaviorTypes> NewBehavior);
 
 	void FindNextPatrolLocation();

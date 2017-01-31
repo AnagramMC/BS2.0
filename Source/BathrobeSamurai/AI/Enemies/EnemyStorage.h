@@ -21,10 +21,12 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+	UFUNCTION(BlueprintCallable, Category = "EnemyList")
 	void AddEnemyToList(AEnemy* EnemyRef);
 
 	void RemoveEnemyFromList(AEnemy* EnemyRef);
 
+	UPROPERTY(BlueprintReadWrite)
 	TArray<AEnemy*> EnemyList;
 
 	void ArrangeList();

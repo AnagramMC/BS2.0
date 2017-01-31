@@ -1,7 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BathrobeSamurai.h"
+#include "BSPlayer.h"
+#include "EnemyController.h"
 #include "EnemyStorage.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyAllTypes.h"
 #include "Enemy.h"
 
 
@@ -24,6 +27,24 @@ void AEnemy::BeginPlay()
 
 	CurrentHealth = MaxHealth;
 	
+	TArray<AActor*> FoundActors;
+
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABSPlayer::StaticClass(), FoundActors);
+
+	if (FoundActors.Num() > 0)
+	{
+		ABSPlayer* Player = Cast<ABSPlayer>(FoundActors[0]);
+
+		if (Player)
+		{
+			AEnemyController* EnemyController = Cast<AEnemyController>(GetController());
+
+			if (EnemyController)
+			{
+				EnemyController->BlackboardComponent->SetValue<UBlackboardKeyType_Object>(TEXT("TargetActor"), Player);
+			}
+		}
+	}
 }
 
 // Called every frame

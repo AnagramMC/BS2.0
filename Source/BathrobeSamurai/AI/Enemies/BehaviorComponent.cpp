@@ -3,6 +3,7 @@
 #include "BathrobeSamurai.h"
 #include "Enemy.h"
 #include "EnemyController.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyAllTypes.h"
 #include "BehaviorComponent.h"
 
 
@@ -67,7 +68,7 @@ void UBehaviorComponent::ChangeBehavior(TEnumAsByte<EBehaviorTypes> NewBehavior)
 
 	if (ControllerRef)
 	{
-
+		ControllerRef->BlackboardComponent->SetValue<UBlackboardKeyType_Enum>(TEXT("BehaviorType"), CurrentBehaviorConfig.BehaviorType);
 	}
 }
 
