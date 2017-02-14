@@ -73,6 +73,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Effects")
 	void HitEffects();
 
+
 public:
 
 	/** Returns CameraBoom subobject **/

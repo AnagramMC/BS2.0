@@ -14,6 +14,17 @@ class BATHROBESAMURAI_API ABasicEnemyMelee : public AEnemy
 	GENERATED_BODY()
 	
 	
-	
+public:
+
+	ABasicEnemyMelee();
+
+	UPROPERTY(VisibleAnywhere)
+	USphereComponent* AttackCollider;
+
+	UFUNCTION(BlueprintCallable, Category = "Melee Attack")
+	void PerformMeleeAttack();
+
+	UPROPERTY(EditDefaultsOnly)
+	float MeleeDamage;
 	
 };
