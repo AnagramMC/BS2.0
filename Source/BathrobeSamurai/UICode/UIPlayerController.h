@@ -22,6 +22,8 @@ public:
 		TSubclassOf<UUserWidget> wMainMenu;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
 		TSubclassOf<UUserWidget> wPauseMenu;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Widgets")
+		UUserWidget* MyPauseMenu;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
 		TSubclassOf<UUserWidget> wDeathMenu;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
@@ -34,7 +36,7 @@ public:
 protected:
 	// Variable to hold the widget After Creating it.
 	UUserWidget* MyMainMenu;
-	UUserWidget* MyPauseMenu;
+	/*UUserWidget* MyPauseMenu;*/
 	UUserWidget* MyDeathMenu;
 	UUserWidget* MyLoadingScreen;
 	UGameManager* GameManager;
