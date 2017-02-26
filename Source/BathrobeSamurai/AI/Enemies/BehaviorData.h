@@ -11,6 +11,7 @@ enum EBehaviorTypes
 	PATROL							UMETA(DisplayName = "Patrol"),
 	ENGAGE							UMETA(DisplayName = "Engage"),
 	HIT								UMETA(DisplayName = "Hit"),
+	EXECUTE							UMETA(DisplayName = "Execute"),
 	FLEE							UMETA(DisplayName = "Flee")
 };
 

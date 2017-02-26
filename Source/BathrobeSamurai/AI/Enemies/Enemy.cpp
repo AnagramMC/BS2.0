@@ -67,6 +67,8 @@ float AEnemy::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageE
 		OnDeath();
 	}
 
+	BehaviorComponent->ChangeBehavior(HIT);
+
 	return ActualDamage;
 }
 
