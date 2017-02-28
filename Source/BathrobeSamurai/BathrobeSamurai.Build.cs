@@ -6,7 +6,7 @@ public class BathrobeSamurai : ModuleRules
 {
 	public BathrobeSamurai(TargetInfo Target)
 	{
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "AIModule", "GameplayTasks", "InputCore", "UMG" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

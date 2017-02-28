@@ -21,10 +21,20 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	USphereComponent* AttackCollider;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USphereComponent* DetectCollider;
+
 	UFUNCTION(BlueprintCallable, Category = "Melee Attack")
 	void PerformMeleeAttack();
+
+	uint16 EnemiesNearMe();
+
+	uint16 CurNumber;
+
+	uint16 ResultNumber;
 
 	UPROPERTY(EditDefaultsOnly)
 	float MeleeDamage;
 	
+
 };

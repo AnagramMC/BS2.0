@@ -42,5 +42,9 @@ public:
 	UFUNCTION()
 	void UpdatePerception(TArray<AActor*> SensedActor);
 
-	
+public:
+	/*    Returns BlackboardComp Subobject   */
+	FORCEINLINE UBlackboardComponent* GetBlackboardComp() const { return BlackboardComponent; }
+	/** Returns BehaviorComp subobject **/
+	FORCEINLINE UBehaviorTreeComponent* GetBehaviorComp() const { return BehaviorTreeComponent; }
 };

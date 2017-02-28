@@ -10,6 +10,9 @@ ABasicEnemyMelee::ABasicEnemyMelee()
 	AttackCollider = CreateDefaultSubobject<USphereComponent>(TEXT("AttackCollider"));
 	AttackCollider->AttachTo(RootComponent);
 
+	DetectCollider = CreateDefaultSubobject<USphereComponent>(TEXT("DetectCollider"));
+	DetectCollider->AttachTo(RootComponent);
+
 }
 
 void ABasicEnemyMelee::PerformMeleeAttack()
@@ -27,5 +30,28 @@ void ABasicEnemyMelee::PerformMeleeAttack()
 			UGameplayStatics::ApplyDamage(Character, MeleeDamage, NULL, this, NULL);
 		}
 	}
+}
+
+uint16 ABasicEnemyMelee::EnemiesNearMe()
+{
+	//Look and store actors
+	TArray<AActor*>Sphere;
+	DetectCollider->GetOverlappingActors(Sphere);
+
+	for (uint16 i = 0; i <= Sphere.Num()-1; i++)
+	{
+		AActor* const ActorContainer = Sphere[i];
+		ABasicEnemyMelee* const MyComrade = Cast<ABasicEnemyMelee>(ActorContainer);
+
+		if (MyComrade)
+		{
+			CurNumber++;
+			
+		}
+	}
+	ResultNumber = CurNumber;
+	CurNumber = 0;
+	return ResultNumber;
+	
 }
 
