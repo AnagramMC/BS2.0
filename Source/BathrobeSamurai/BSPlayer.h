@@ -105,6 +105,7 @@ protected:
 	void LookUpAtRate(float Rate);
 
 	/** Manages the lockon state - will be a toggle on and off */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	bool LockOnEnemy;
 
 	//Counter for what light attack arin should be on.
