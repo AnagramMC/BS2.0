@@ -24,6 +24,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USphereComponent* DetectCollider;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool Execute;
+
 	UFUNCTION(BlueprintCallable, Category = "Melee Attack")
 	void PerformMeleeAttack();
 

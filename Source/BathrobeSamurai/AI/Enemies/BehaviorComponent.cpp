@@ -19,6 +19,7 @@ UBehaviorComponent::UBehaviorComponent()
 	PatrolBehaviorConfig.BehaviorType = PATROL;
 	EngageBehaviorConfig.BehaviorType = ENGAGE;
 	HitBehaviorConfig.BehaviorType = HIT;
+	ExecuteBehaviorConfig.BehaviorType = EXECUTE;
 	FleeBehaviorConfig.BehaviorType = FLEE;
 
 	// ...
@@ -42,6 +43,7 @@ void UBehaviorComponent::BeginPlay()
 	BehaviorArray.Add(PatrolBehaviorConfig);
 	BehaviorArray.Add(EngageBehaviorConfig);
 	BehaviorArray.Add(HitBehaviorConfig);
+	BehaviorArray.Add(ExecuteBehaviorConfig);
 	BehaviorArray.Add(FleeBehaviorConfig);
 
 	AnimationIndex.AddZeroed(BehaviorArray.Num());
