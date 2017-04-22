@@ -78,21 +78,6 @@ void AUIPlayerController::Tick(float DeltaTime)
 		AUIPlayerController::PauseMenu();
 		SetPause(true);
 	}
-	
-	if (APlayerController::WasInputKeyJustPressed(EKeys::BackSpace) || APlayerController::WasInputKeyJustPressed(EKeys::Gamepad_FaceButton_Right))
-	{
-		if (MyPauseMenu->IsInViewport())
-		{
-			MyPauseMenu->RemoveFromViewport();
-			FInputModeGameOnly GameMode;
-			SetInputMode(GameMode);
-			FSlateApplication::Get().SetAllUserFocusToGameViewport();
-
-			//Show the Cursor.
-			bShowMouseCursor = false;
-			SetPause(false);
-		}
-	}
 }
 
 void AUIPlayerController::PauseMenu()
